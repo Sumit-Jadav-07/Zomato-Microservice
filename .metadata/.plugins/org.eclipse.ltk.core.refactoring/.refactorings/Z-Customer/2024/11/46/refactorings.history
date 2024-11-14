@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Z-Customer/src/main/java/com/respository&apos; to &apos;repository&apos;" description="Rename resource &apos;respository&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/main/java/com/respository" name="repository" stamp="1731495185259" updateReferences="true"/>
+</session>

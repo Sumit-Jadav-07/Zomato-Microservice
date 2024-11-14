@@ -1,0 +1,5 @@
+1731495645497	Move 'config' to 'com'
+1731495649089	Move 'controller' to 'com'
+1731495652135	Move 'entity' to 'com'
+1731495655141	Move 'repository' to 'com'
+1731495657868	Move 'service' to 'com'

@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-ZCustomerApplication<Z-Customer>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.ZCustomerApplication",
+      "projectName": "Z-Customer",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-ZRestaurantApplication<Z-Restaurant>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.ZRestaurantApplication",
+      "projectName": "Z-Restaurant",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
