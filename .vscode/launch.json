@@ -8,7 +8,8 @@
       "mainClass": "com.ZCustomerApplication",
       "projectName": "Z-Customer",
       "args": "",
-      "envFile": "${workspaceFolder}/.env"
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=62738 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=Z-Customer"
     },
     {
       "type": "java",
@@ -17,6 +18,26 @@
       "cwd": "${workspaceFolder}",
       "mainClass": "com.ZRestaurantApplication",
       "projectName": "Z-Restaurant",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-ZSessionApplication<Z-Session>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.ZSessionApplication",
+      "projectName": "Z-Session",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-ZGatewayApplication<Z-Gateway>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.ZGatewayApplication",
+      "projectName": "Z-Gateway",
       "args": "",
       "envFile": "${workspaceFolder}/.env"
     }

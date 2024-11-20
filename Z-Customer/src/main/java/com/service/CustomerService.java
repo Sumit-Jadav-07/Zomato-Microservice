@@ -22,12 +22,18 @@ public class CustomerService {
   CustomerRepository customerRepo;
 
   // Checking if email exist or not
-  public CustomerEntity authenticateCustomer(String email){
+  public boolean authenticateCustomer(String email, String password) {
     CustomerEntity customer = customerRepo.findByEmail(email);
-    if(customer != null){
-      return customer;
-    } 
-    return null;
+    if (customer != null) {
+      String encryptedPassword = customer.getPassword();
+      System.out.println("Comparing password: " + password + " with encrypted password: " + encryptedPassword);
+      if (encoder.matches(password, encryptedPassword)) {
+        return true;
+      }
+    } else {
+      System.out.println("Customer not found for email: " + email);
+    }
+    return false;
   }
 
 }

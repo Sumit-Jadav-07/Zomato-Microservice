@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
 @RestController
 @RequestMapping("/api/restaurants")
 public class RestaurantController {
@@ -28,8 +27,8 @@ public class RestaurantController {
 
   @PostMapping
   public String addRestaurant(@RequestBody RestaurantEntity entity) {
-      repo.save(entity);
-      return "Success";
+    repo.save(entity);
+    return "Success";
   }
 
   @GetMapping
@@ -39,31 +38,50 @@ public class RestaurantController {
   }
 
   @GetMapping("{restaurantId}")
-  public ResponseEntity<RestaurantEntity> getRestaurant(@PathVariable("restaurantId") Integer restaurantId){
+  public ResponseEntity<RestaurantEntity> getRestaurant(@PathVariable("restaurantId") Integer restaurantId) {
     Optional<RestaurantEntity> op = repo.findById(restaurantId);
     if (op.isPresent()) {
-			return ResponseEntity.ok(op.get());
-		} else {
-			return ResponseEntity.notFound().build();
-		}
+      return ResponseEntity.ok(op.get());
+    } else {
+      return ResponseEntity.notFound().build();
+    }
   }
 
   @DeleteMapping("{restaurantId}")
-  public String deleteRestaurant(@PathVariable("restaurantId") Integer restaurantId){
+  public String deleteRestaurant(@PathVariable("restaurantId") Integer restaurantId) {
     repo.deleteById(restaurantId);
     return "Success";
   }
 
-  @PutMapping
-  public ResponseEntity<?> updateRestaurant(@RequestBody RestaurantEntity entity) {
-      Optional<RestaurantEntity> op = repo.findById(entity.getRestaurantId());
-      if(op.isEmpty()){
-        return ResponseEntity.ok("Invalid RestaurantId");
-      } else {
-        repo.save(entity);
-        return ResponseEntity.ok(entity);
-      }
+  @PutMapping("{restaurantId}")
+  public ResponseEntity<?> updateRestaurant(@PathVariable("restaurantId") Integer restaurantId,
+      @RequestBody RestaurantEntity entity) {
+    Optional<RestaurantEntity> op = repo.findById(restaurantId);
+
+    if (op.isEmpty()) {
+      return ResponseEntity.ok("Invalid RestaurantId");
+    } else {
+
+      RestaurantEntity existingRestaurant = op.get();
+
+      existingRestaurant.setRestaurantName(entity.getRestaurantName());
+      existingRestaurant.setEmail(entity.getEmail());
+      existingRestaurant.setPassword(entity.getPassword());
+      existingRestaurant.setContactNumber(entity.getContactNumber());
+      existingRestaurant.setCategory(entity.getCategory());
+      existingRestaurant.setDescription(entity.getDescription());
+      existingRestaurant.setOpeningHours(entity.getOpeningHours());
+      existingRestaurant.setClosingHours(entity.getClosingHours());
+      existingRestaurant.setAddress(entity.getAddress());
+      existingRestaurant.setOnlineStatus(entity.getOnlineStatus());
+      existingRestaurant.setActiveStatus(entity.getActiveStatus());
+      existingRestaurant.setRestaurantImagePath(entity.getRestaurantImagePath());
+      existingRestaurant.setResToken(entity.getResToken());
+
+      repo.save(existingRestaurant);
+
+      return ResponseEntity.ok(existingRestaurant);
+    }
   }
-  
-  
+
 }
