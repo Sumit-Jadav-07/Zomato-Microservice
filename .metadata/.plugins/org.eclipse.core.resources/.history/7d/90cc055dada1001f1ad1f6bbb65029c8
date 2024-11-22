@@ -1,5 +1,0 @@
-package com.respository;
-
-public interface CustomerRespository {
-
-}

@@ -15,6 +15,7 @@ public class AuthenticationService {
 
     @Value("${customerService.url}") // Fetch customer-service URL from application.properties
     private String customerServiceUrl;
+    
 
     public AuthenticationService(WebClient.Builder webClientBuilder) {
         this.webClient = webClientBuilder.build();

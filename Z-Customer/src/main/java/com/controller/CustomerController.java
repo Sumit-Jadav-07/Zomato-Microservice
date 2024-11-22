@@ -44,7 +44,7 @@ public class CustomerController {
 
 	@Value("${restaurantService.url}")
 	private String restaurantServiceUrl;
-
+	
 	@PostMapping
 	public String addCustomer(@RequestBody CustomerEntity entity) {
 		entity.setPassword(encoder.encode(entity.getPassword()));
