@@ -3,6 +3,13 @@ spring:
     name: api-gateway
   main:
     web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+        - id: session-service
+          uri: lb://SESSION-SERVICE
+          predicates:
+            - Path=/api/public/session/**
 
 server:
   port: 8989
@@ -15,11 +22,3 @@ eureka:
     instance:
       prefer-ip-address: true
 
-spring:
-  cloud:
-    gateway:
-      routes:
-        - id: session-service
-          uri: lb://SESSION-SERVICE
-          predicates:
-            - Path=/api/public/session/**
